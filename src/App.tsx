@@ -79,6 +79,18 @@ function App() {
   }
 
 
+
+
+
+  const setCompleted = async (id: string) => {
+    try {
+      const { data } = await axios.put<Todo>(`/api/todo/${id}`, {completed:true});
+      showTodos();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     showTodos()
   }, [])
@@ -90,16 +102,6 @@ function App() {
       setTodoList(todoList.filter((todo) => todo.completed == false))
     }
   }, [showCompleted])
-
-
-  const setCompleted = async (id: string) => {
-    try {
-      const { data } = await axios.post<Todo>(`/api/todo/${id}`);
-      showTodos();
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   const lastTodoIndex = currentPage * todosPerPage;
   const firtsTodoIndex = lastTodoIndex - todosPerPage;
@@ -137,8 +139,11 @@ function App() {
           </form>
 
           <div>
-            {
+            {/* {
               currentTodos && currentTodos.map((todo) => (<TodoComponent completed={todo.completed} createdAt={todo.createdAt} description={todo.description} title={todo.title} updatedAt={todo.updatedAt} id={todo.id} onDelete={onDelete} onEdit={onEdit} setCompleted={setCompleted} />))
+            } */}
+            {
+              
             }
             <TodoComponent createdAt='2023' description='Todo descrition' title='Titulo!' updatedAt='2024' onDelete={onDelete} onEdit={setuserId} setCompleted={setCompleted} id='123' completed={true} />
           </div>
