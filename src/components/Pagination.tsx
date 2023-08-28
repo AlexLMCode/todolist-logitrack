@@ -12,7 +12,7 @@ export const Pagination = ({ totalTodos, todosPerPage, setCurrentPage,currentPag
             <ul className="pagination"> 
                 {
                     pages && pages.map((page, index) => (
-                        <li className={`page-item ${page == currentPage ? 'active' : ''}`}><a className="page-link" key={index} onClick={()=>setCurrentPage(page)}>{page}</a></li>
+                        <li className={`page-item ${page == currentPage ? 'active' : ''}`} key={index}><a className="page-link"  onClick={()=>setCurrentPage(page)}>{page}</a></li>
                     ))
                 }
             </ul>
